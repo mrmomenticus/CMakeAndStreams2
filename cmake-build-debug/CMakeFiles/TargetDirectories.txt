@@ -1,0 +1,3 @@
+/home/moment/CLionProjects/TesProg2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/moment/CLionProjects/TesProg2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/moment/CLionProjects/TesProg2/cmake-build-debug/CMakeFiles/TesProg2.dir
