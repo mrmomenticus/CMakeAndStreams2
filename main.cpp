@@ -4,6 +4,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <memory.h>
+#include <cstdlib>
 
 #define BUFFER_SIZE 64
 
@@ -32,29 +33,36 @@ int main()
         std::cout << "Не получилось начать слушать\n";
         exit(0);
     }
-
-    int s = accept(sock, NULL, NULL);
-    if( s < 0 )
-    {
-        std::cout << "Не получилось принять\n";
-        exit(0);
-    }
-
-    char buffer[BUFFER_SIZE];
-    int counter = 0;
-    for(;;)
-    {
-        memset(buffer, 0, BUFFER_SIZE);
-        int rc = recv(s, buffer, BUFFER_SIZE, 0);
-        if( rc < 0 )
-        {
-            if( errno == EINTR )
-                continue;
-            return 0;
+    while(true) {
+        int s = accept(sock, NULL, NULL);
+        if (s < 0) {
+            std::cout << "Не получилось принять\n";
+            exit(0);
         }
-        if( rc == 0 )
-            break;
-        printf("%s\n", buffer);
+
+        char buffer[BUFFER_SIZE];
+        int counter = 0;
+        for (;;) {
+            memset(buffer, 0, BUFFER_SIZE);
+            int rc = recv(s, buffer, BUFFER_SIZE, 0);
+
+            if (rc < 0) {
+                if (errno == EINTR)
+                    continue;
+                return 0;
+            }
+            if (rc == 0) {
+                break;
+            }
+            int i = atoi(buffer);
+            if (i > 99 && i % 32 == 0) {
+                std::cout << "Данные полученны!";
+            } else {
+                std::cout << "Ошибка!";
+            }
+
+
+        }
     }
     return 0;
 }

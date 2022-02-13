@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/moment/CLionProjects/TesProg2/cmake-build-debug",
-		"source" : "/home/moment/CLionProjects/TesProg2"
+		"build" : "/home/moment/CLionProjects/CMakeStreams2/cmake-build-debug",
+		"source" : "/home/moment/CLionProjects/CMakeStreams2"
 	},
 	"version" : 
 	{
