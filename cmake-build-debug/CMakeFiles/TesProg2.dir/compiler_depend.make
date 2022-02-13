@@ -191,7 +191,6 @@ CMakeFiles/TesProg2.dir/main.cpp.o: ../main.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/netinet/in.h \
   /usr/include/x86_64-linux-gnu/bits/in.h \
-  /usr/include/arpa/inet.h \
   /usr/include/memory.h \
   /usr/include/string.h \
   /usr/include/strings.h
@@ -294,8 +293,6 @@ CMakeFiles/TesProg2.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
 
 /usr/include/c++/9/ext/string_conversions.h:
-
-/usr/include/arpa/inet.h:
 
 /usr/include/c++/9/bits/alloc_traits.h:
 

@@ -1,11 +1,8 @@
 #include <iostream>
-#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <arpa/inet.h>
 #include <memory.h>
 #include <cstdlib>
-
 #define BUFFER_SIZE 64
 
 int main()
@@ -27,42 +24,46 @@ int main()
         exit(0);
     }
 
-    /*помечаем сокет, как пассивный - он будет слушать порт*/
     if( listen(sock, 5) )
     {
         std::cout << "Не получилось начать слушать\n";
         exit(0);
     }
-    while(true) {
+
+    while(true)
+    {
         int s = accept(sock, NULL, NULL);
-        if (s < 0) {
+        if( s < 0 )
+        {
             std::cout << "Не получилось принять\n";
             exit(0);
         }
 
-        char buffer[BUFFER_SIZE];
-        int counter = 0;
-        for (;;) {
+        char buffer[BUFFER_SIZE]{};
+
+        for(;;)
+        {
             memset(buffer, 0, BUFFER_SIZE);
             int rc = recv(s, buffer, BUFFER_SIZE, 0);
-
-            if (rc < 0) {
-                if (errno == EINTR)
+            if( rc < 0 )
+            {
+                if( errno == EINTR )
                     continue;
                 return 0;
             }
-            if (rc == 0) {
-                break;
-            }
             int i = atoi(buffer);
             if (i > 99 && i % 32 == 0) {
-                std::cout << "Данные полученны!";
-            } else {
-                std::cout << "Ошибка!";
+                printf("Данные полученны!\n");
+
             }
-
-
+            if( rc == 0 )
+                break;
+            printf("Ошибка!\n");
         }
     }
     return 0;
 }
+
+
+
+
